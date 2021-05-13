@@ -44,7 +44,7 @@ void free_list(stack_t *list);
 
 /* Instruction prototypes */
 void push(stack_t **list, unsigned int line);
-
+void pall(stack_t **list, unsigned int line);
 
 
 #endif /* ifndef MONTY_H */

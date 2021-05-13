@@ -8,7 +8,6 @@
  */
 int main(int ac, char **av)
 {
-	int i;
 	FILE *file_pointer;
 	stack_t *list;
 	unsigned int line = 1;
@@ -23,11 +22,13 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	line_processor(line, file_pointer, &list);
+	/*
 	for (i = 0; list; i++)
 	{
 		printf("%d\n", list->n);
 		list = list->next;
 	}
+	*/
 	free_list(&*list);
 	fclose(file_pointer);
 	return (EXIT_SUCCESS);
@@ -49,9 +50,9 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 	int i;
 	instruction_t instructions[] = {
 		{"push", push},
+		{"pall", pall},
 		{NULL, NULL}
 		/*
-		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
