@@ -78,5 +78,16 @@ void pall(stack_t **list, unsigned int line __attribute__((unused)))
  */
 void pint(stack_t **list __attribute__((unused)), unsigned int line __attribute__((unused)))
 {
+	stack_t *aux = *list;
+        int i;
 
+        if (!aux)
+        {
+		fprintf(stderr, "L%d: can't pint, stack empty",line);
+		free_list(&**list);
+		exit(EXIT_FAILURE);
+	}
+        for (i = 0; aux->next; i++)
+                aux = aux->next;
+	printf("%d\n", aux->n);
 }
