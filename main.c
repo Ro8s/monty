@@ -32,7 +32,7 @@ int main(int ac, char **av)
 		}
 		line_processor(line, file_pointer, &list);
 	}
-	
+
 	free_list(&list);
 	fclose(file_pointer);
 	return (EXIT_SUCCESS);
@@ -55,10 +55,9 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+	        {"pop", pop},
 		{NULL, NULL}
-		/*
-		 *{"pop", pop},
-		 *{"swap", swap},
+		 /*{"swap", swap},
 		 *{"add", add},
 		 *{"nop", nop},
 		 *{"sub", sub},
