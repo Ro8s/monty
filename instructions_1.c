@@ -14,7 +14,11 @@ void push(stack_t **list, unsigned int line)
 	stack_t *search = *list;
 
 	cadena = strtok(NULL, " \n\t");
-	for (i = 0; cadena[i]; i++)
+	if (cadena[0] == '-' && cadena[1] != '\0')
+		i = 1;
+	else
+		i = 0;
+	for (; cadena[i]; i++)
 		if (!isdigit(cadena[i]))
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line);
