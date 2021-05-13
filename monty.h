@@ -56,8 +56,8 @@ void error_push(unsigned int line);
 
 /* Instruction prototypes */
 void push(stack_t **list, unsigned int line);
-void pall(stack_t **list, unsigned int line);
+void pall(stack_t **list, unsigned int line __attribute__((unused))));
 void pint(stack_t **list, unsigned int line);
-
+void pop(stack_t **list, unsigned int line);
 
 #endif /* ifndef MONTY_H */

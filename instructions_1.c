@@ -68,7 +68,6 @@ void pall(stack_t **list, unsigned int line __attribute__((unused)))
 		aux = aux->prev;
 	}
 }
-
 /**
  * pint - prints the value at the top from the stack
  * @list: header of the list.
@@ -83,10 +82,38 @@ void pint(stack_t **list, unsigned int line)
         if (!aux)
         {
 		fprintf(stderr, "L%d: can't pint, stack empty",line);
-		free_list(&*list);
 		exit(EXIT_FAILURE);
 	}
         for (i = 0; aux->next; i++)
                 aux = aux->next;
 	printf("%d\n", aux->n);
+}
+/**
+ * pop - delete the top element of the stack.
+ * @list: header of the list.
+ * @line: line of the command.
+ * ---------------------
+ */
+void pop(stack_t **list, unsigned int line)
+{
+	stack_t *aux = *list;
+	int i;
+
+	if(!list)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack", line);
+		exit(EXIT_FAILURE);
+	}
+	if(list->next == NULL)
+	{
+		*list = NULL;
+		free(aux);
+	}
+	else
+	{
+		for (i = 0; aux->next; i++)
+			aux = aux->next;
+		aux->prev->next = NULL;
+		free(aux);
+	}
 }
