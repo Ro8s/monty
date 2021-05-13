@@ -77,15 +77,15 @@ void pall(stack_t **list, unsigned int line __attribute__((unused)))
 void pint(stack_t **list, unsigned int line)
 {
 	stack_t *aux = *list;
-        int i;
+	int i;
 
-        if (!aux)
-        {
-		fprintf(stderr, "L%d: can't pint, stack empty",line);
+	if (!aux)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty", line);
 		exit(EXIT_FAILURE);
 	}
-        for (i = 0; aux->next; i++)
-                aux = aux->next;
+	for (i = 0; aux->next; i++)
+		aux = aux->next;
 	printf("%d\n", aux->n);
 }
 /**
@@ -96,15 +96,15 @@ void pint(stack_t **list, unsigned int line)
  */
 void pop(stack_t **list, unsigned int line)
 {
-        stack_t *aux = *list;
+	stack_t *aux = *list;
 	int i;
 
-	if(!list)
-        {
-                fprintf(stderr, "L%d: can't pop an empty stack", line);
+	if (!list)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack", line);
 		exit(EXIT_FAILURE);
 	}
-	if(list->next == NULL)
+	if (list->next == NULL)
 	{
 		*list = NULL;
 		free(aux);
