@@ -53,5 +53,6 @@ void pall(stack_t **list, unsigned int line __attribute__((unused)));
 void pint(stack_t **list, unsigned int line);
 void pop(stack_t **list, unsigned int line);
 void swap(stack_t **list, unsigned int line);
+stack_t *last_list_check(stack_t *list);
 
 #endif /* ifndef MONTY_H */
