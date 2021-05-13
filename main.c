@@ -23,19 +23,16 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 
+	on_exit(free_list, &list);
+	on_exit(free_buffer, &buffer);
+	on_exit(close_file, file_pointer);
 	for (line = 1; line; line++)
 	{
-		if (getline(&buffer, &size, file) == -1)
-		{
-			free(buffer);
+		if (getline(&buffer, &size, file_pointer) == -1)
 			break;
-		}
-		line_processor(line, file_pointer, &list);
+		line_processor(line, file_pointer, &list, buffer);
 	}
-
-	free_list(&list);
-	fclose(file_pointer);
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -47,7 +44,7 @@ int main(int ac, char **av)
  * Return: -1 if error, 0 if success
  */
 
-void line_processor(unsigned int line, FILE *file, stack_t **list)
+void line_processor(unsigned int line, FILE *file, stack_t **list, char *buffer)
 {
 	char *token;
 	size_t size = 32, i;
@@ -55,7 +52,7 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
-	        {"pop", pop},
+	    {"pop", pop},
 		{NULL, NULL}
 		 /*{"swap", swap},
 		 *{"add", add},
@@ -70,7 +67,7 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 
 	token = strtok(buffer, " \n\t");
 	if (!token)
-		continue;
+		return;
 
 	for (i = 0; instructions[i].opcode; i++)
 		if (strcmp(token, instructions[i].opcode) == 0)
@@ -79,5 +76,5 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 			break;
 		}
 	if (!instructions[i].opcode)
-		error_unk_ins(&**list, &*buffer, line, token);
+		error_unk_ins(&*list, &*buffer, line, token);
 }

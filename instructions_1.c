@@ -15,14 +15,14 @@ void push(stack_t **list, unsigned int line)
 
 	cadena = strtok(NULL, " \n\t");
 	if (!cadena)
-		error_push(&**list, line);
+		error_push(&*list, line);
 	if (cadena[0] == '-' && cadena[1] != '\0')
 		i = 1;
 	else
 		i = 0;
 	for (; cadena[i]; i++)
 		if (!isdigit(cadena[i]))
-			error_push(&**list, line);
+			error_push(&*list, line);
 
 	num = atoi(cadena);
 	nodo = malloc(sizeof(stack_t));
