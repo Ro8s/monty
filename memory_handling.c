@@ -2,7 +2,8 @@
 
 /**
  * free_list - Frees a list
- * @list: list to free
+ * @status: Exit status
+ * @arg: argument
  * ---------------
  */
 void free_list(int status, void *arg)
@@ -25,7 +26,8 @@ void free_list(int status, void *arg)
 
 /**
  * free_buffer - Frees the buffer of the getline
- * @buffer: Buffer to liberate
+ * @status: Exit status
+ * @arg: argument
  * ------------
  */
 void free_buffer(int status, void *arg)
@@ -33,7 +35,7 @@ void free_buffer(int status, void *arg)
 	char **buffer;
 
 	(void)status;
-	
+
 	buffer = (char **)arg;
 	if (*buffer)
 		free(*buffer);
@@ -41,7 +43,8 @@ void free_buffer(int status, void *arg)
 
 /**
  * close_file - Closes the file passed
- * @file: File to close
+ * @status: Exit status
+ * @arg: argument
  * ---------------
  */
 void close_file(int status, void *arg)

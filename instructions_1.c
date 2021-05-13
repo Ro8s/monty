@@ -77,11 +77,11 @@ void pall(stack_t **list, unsigned int line __attribute__((unused)))
 void pint(stack_t **list, unsigned int line)
 {
 	stack_t *aux = *list;
-        int i;
+	int i;
 
 	if (!aux)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n",line);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
 	for (i = 0; aux->next; i++)
@@ -99,12 +99,12 @@ void pop(stack_t **list, unsigned int line)
 	stack_t *aux = *list;
 	int i;
 
-	if(!*list)
+	if	(!*list)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
 		exit(EXIT_FAILURE);
 	}
-	if((*list)->next == NULL)
+	if	((*list)->next == NULL)
 	{
 		*list = NULL;
 		free(aux);
@@ -129,10 +129,10 @@ void swap(stack_t **list, unsigned int line)
 	stack_t *aux = *list, *ant = *list;
 
 	if (!*list)
-        {
-                fprintf(stderr, "L%d: can't swap, stack too short", line);
-                exit(EXIT_FAILURE);
-        }
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short", line);
+		exit(EXIT_FAILURE);
+	}
 	while (aux->next)
 	{
 		aux = aux->next;

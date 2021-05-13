@@ -39,8 +39,8 @@ int main(int ac, char **av)
 
 /**
  * line_processor - Process and evaluates each line
+ * @buffer: Line read
  * @line: Line being processed
- * @file: File to read
  * @list: Linked list to pass to the function
  * ---------------------------
  * Return: -1 if error, 0 if success
@@ -56,7 +56,8 @@ void line_processor(unsigned int line, stack_t **list, char *buffer)
 		{"pint", pint},
 	    {"pop", pop},
 		{NULL, NULL}
-		 /*{"swap", swap},
+		/*
+		 *{"swap", swap},
 		 *{"add", add},
 		 *{"nop", nop},
 		 *{"sub", sub},
