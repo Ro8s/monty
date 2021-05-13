@@ -39,4 +39,4 @@ int push(stack_t **list, unsigned int line)
 	nodo->prev = search;
 	search->next = nodo;
 	return (0);
-} 
+}

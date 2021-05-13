@@ -7,9 +7,10 @@
  */
 int main(int ac, char **av)
 {
-	int line = 0, i, status;
+	int i, status;
 	FILE *file_pointer;
 	stack_t *list;
+	unsigned int line;
 
 	list = NULL;
 	if (error_checker(ac, av))
@@ -43,13 +44,14 @@ int main(int ac, char **av)
  * Return: -1 if error, 0 if success
  */
 
-int line_processor(int line, FILE *file, stack_t **list)
+int line_processor(unsigned int line, FILE *file, stack_t **list)
 {
 	char *buffer = NULL, *token;
 	size_t size = 32;
 	int i;
 	instruction_t instructions[] = {
-		{"push", push}
+		{"push", push},
+		{NULL, NULL}
 		/*
 		{"pall", pall},
 		{"pint", pint},
