@@ -1,5 +1,10 @@
 #include "monty.h"
 
+/**
+ * free_list - Frees a list
+ * @list: list to free
+ * ---------------
+ */
 void free_list(stack_t *list)
 {
     stack_t *fire;
