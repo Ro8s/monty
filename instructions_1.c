@@ -117,3 +117,46 @@ void pop(stack_t **list, unsigned int line)
 		free(aux);
 	}
 }
+/**
+ * swap - swaps the top two elements of the stack.
+ * @list: header of the list.
+ * @line: line of the command.
+ * ---------------------
+ */
+void swap(stack_t **list, unsigned int line)
+{
+	int c = 0;
+	stack_t *aux = *list, *ant = *list;
+
+	if (!*list)
+        {
+                fprintf(stderr, "L%d: can't swap, stack too short", line);
+                exit(EXIT_FAILURE);
+        }
+	while (aux->next)
+	{
+		aux = aux->next;
+		ant = aux->prev;
+		c++
+	}
+	if (c < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short", line);
+		exit(EXIT_FAILURE);
+	}
+	if (c == 2)
+	{
+		aux->next = ant;
+		ant->prev = aux;
+		ant->next = NULL;
+		aux->prev = NULL;
+		*list = aux;
+	}
+	else
+	{
+		aux->prev = ant->prev->next;
+		ant->prev->next = ant->next;
+		ant->prev = aux;
+		ant->next = NULL;
+	}
+}
