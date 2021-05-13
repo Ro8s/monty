@@ -134,6 +134,6 @@ stack_t *last_list_check(stack_t *list)
 	}
 	if (c < 2)
 		return (NULL);
-	
-	
+
+	return (list);
 }
