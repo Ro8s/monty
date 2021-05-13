@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * push - Executes the push opcode
+ * @list: List to modify
+ * @line: Line being executed
+ * --------------------
+ */
+
 void push(stack_t **list, unsigned int line)
 {
 	int i, num;
