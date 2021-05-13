@@ -5,6 +5,14 @@
 #include <stdio.h>
 #include <ctype.h>
 
+/*
+extern typedef struct global_var
+{
+	FILE *file;
+	char *buffer;
+} global_t;
+*/
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer

@@ -10,7 +10,8 @@ int main(int ac, char **av)
 {
 	FILE *file_pointer;
 	stack_t *list;
-	unsigned int line = 1;
+	unsigned int line;
+	char *buffer = NULL;
 
 	list = NULL;
 	error_checker(ac, av);
@@ -21,8 +22,18 @@ int main(int ac, char **av)
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	line_processor(line, file_pointer, &list);
-	free_list(&*list);
+
+	for (line = 1; line; line++)
+	{
+		if (getline(&buffer, &size, file) == -1)
+		{
+			free(buffer);
+			break;
+		}
+		line_processor(line, file_pointer, &list);
+	}
+	
+	free_list(&list);
 	fclose(file_pointer);
 	return (EXIT_SUCCESS);
 }
@@ -38,7 +49,7 @@ int main(int ac, char **av)
 
 void line_processor(unsigned int line, FILE *file, stack_t **list)
 {
-	char *buffer = NULL, *token;
+	char *token;
 	size_t size = 32, i;
 	instruction_t instructions[] = {
 		{"push", push},
@@ -58,24 +69,16 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 		*/
 	};
 
-	for (line = 1; line; line += 1)
-	{
-		if (getline(&buffer, &size, file) == -1)
-		{
-			free(buffer);
-			return;
-		}
-		token = strtok(buffer, " \n\t");
-		if (!token)
-			continue;
+	token = strtok(buffer, " \n\t");
+	if (!token)
+		continue;
 
-		for (i = 0; instructions[i].opcode; i++)
-			if (strcmp(token, instructions[i].opcode) == 0)
-			{
-				instructions[i].f(&*list, line);
-				break;
-			}
-		if (!instructions[i].opcode)
-			error_unk_ins(&**list, &*buffer, line, token);
-	}
+	for (i = 0; instructions[i].opcode; i++)
+		if (strcmp(token, instructions[i].opcode) == 0)
+		{
+			instructions[i].f(&*list, line);
+			break;
+		}
+	if (!instructions[i].opcode)
+		error_unk_ins(&**list, &*buffer, line, token);
 }

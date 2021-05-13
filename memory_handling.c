@@ -5,7 +5,7 @@
  * @list: list to free
  * ---------------
  */
-void free_list(stack_t *list)
+void free_list(stack_t **list)
 {
 	stack_t *fire;
 

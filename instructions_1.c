@@ -76,7 +76,7 @@ void pall(stack_t **list, unsigned int line __attribute__((unused)))
  * @line: line of the command.
  * ---------------------
  */
-void pint(stack_t **list __attribute__((unused)), unsigned int line __attribute__((unused)))
+void pint(stack_t **list, unsigned int line)
 {
 	stack_t *aux = *list;
         int i;
