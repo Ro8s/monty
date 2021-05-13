@@ -28,6 +28,7 @@ int main(int ac, char **av)
 		printf("%d\n", list->n);
 		list = list->next;
 	}
+	free_list(&*list);
 	fclose(file_pointer);
 	return (EXIT_SUCCESS);
 }
@@ -68,7 +69,6 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 	{
 		if (getline(&buffer, &size, file) == -1)
 		{
-			/* free_list(list); */
 			free(buffer);
 			return;
 		}
@@ -85,7 +85,7 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 
 		if (!instructions[i].opcode)
 		{
-			/* free_list(list); */
+			free_list(&**list);
 			free(buffer);
 			fprintf(stderr, "L%d: unknown instruction %s\n", line, token);
 			exit(EXIT_FAILURE);

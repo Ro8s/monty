@@ -12,7 +12,7 @@ void push(stack_t **list, unsigned int line)
 		if (!isdigit(cadena[i]))
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line);
-			/*free_list(list);*/
+			free_list(&**list);
 			exit(EXIT_FAILURE);
 		}
 
@@ -21,7 +21,7 @@ void push(stack_t **list, unsigned int line)
 	if (!nodo)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		/*free_list(list);*/
+		free_list(&**list);
 		exit(EXIT_FAILURE);
 	}
 	nodo->n = num;

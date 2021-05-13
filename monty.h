@@ -40,6 +40,7 @@ typedef struct instruction_s
 /* Regular prototypes */
 void error_checker(int ac, char **av);
 void line_processor(unsigned int line, FILE *file, stack_t **list);
+void free_list(stack_t *list);
 
 /* Instruction prototypes */
 void push(stack_t **list, unsigned int line);
