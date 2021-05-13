@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -15,9 +16,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -33,5 +34,16 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/* ------------- Prototypes -------------  */
+
+/* Regular prototypes */
+int error_checker(int ac, char **av);
+int line_processor(int line, FILE *file, stack_t **list);
+
+/* Instruction prototypes */
+int push(stack_t **list, unsigned int line);
+
+
 
 #endif /* ifndef MONTY_H */
