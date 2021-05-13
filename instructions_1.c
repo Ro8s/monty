@@ -6,7 +6,6 @@
  * @line: Line being executed
  * --------------------
  */
-
 void push(stack_t **list, unsigned int line)
 {
 	int i, num;
@@ -47,7 +46,7 @@ void push(stack_t **list, unsigned int line)
 }
 
 /**
- * pall - prints all the values on the stack, starting from the top of the stack.
+ * pall - prints all the values on the stack from the top
  * @list: header of the list.
  * @line: line of the command.
  * Return: void
@@ -61,8 +60,8 @@ void pall(stack_t **list, unsigned int line __attribute__((unused)))
 		return;
 
 	for (i = 0; aux->next; i++)
-        aux = aux->next;
-	while(aux)
+		aux = aux->next;
+	while (aux)
 	{
 		printf("%d\n", aux->n);
 		aux = aux->prev;

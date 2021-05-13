@@ -7,17 +7,17 @@
  */
 void free_list(stack_t *list)
 {
-    stack_t *fire;
+	stack_t *fire;
 
-    if (!list)
-        return;
+	if (!list)
+		return;
 
-    fire = list;
+	fire = list;
 
-    for (; list;)
-    {
-        fire = list;
-        list = list->next;
-        free(fire);
-    }
+	for (; list;)
+	{
+		fire = list;
+		list = list->next;
+		free(fire);
+	}
 }
