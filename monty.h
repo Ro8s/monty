@@ -31,8 +31,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+        char *opcode;
+        void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /* ------------- Prototypes -------------  */
@@ -41,6 +41,7 @@ typedef struct instruction_s
 void error_checker(int ac, char **av);
 void line_processor(unsigned int line, FILE *file, stack_t **list);
 void free_list(stack_t *list);
+void error_unk_ins(stack_t *list, char *buffer, unsigned int line, char *token);
 
 /* Instruction prototypes */
 void push(stack_t **list, unsigned int line);
