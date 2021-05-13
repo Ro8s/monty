@@ -15,21 +15,20 @@ void push(stack_t **list, unsigned int line)
 
 	cadena = strtok(NULL, " \n\t");
 	if (!cadena)
-		error_push(&**list, line);
+		error_push(&*list, line);
 	if (cadena[0] == '-' && cadena[1] != '\0')
 		i = 1;
 	else
 		i = 0;
 	for (; cadena[i]; i++)
 		if (!isdigit(cadena[i]))
-			error_push(&**list, line);
+			error_push(&*list, line);
 
 	num = atoi(cadena);
 	nodo = malloc(sizeof(stack_t));
 	if (!nodo)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free_list(&**list);
 		exit(EXIT_FAILURE);
 	}
 	nodo->n = num;
@@ -84,7 +83,7 @@ void pint(stack_t **list, unsigned int line)
         if (!aux)
         {
 		fprintf(stderr, "L%d: can't pint, stack empty",line);
-		free_list(&**list);
+		free_list(&*list);
 		exit(EXIT_FAILURE);
 	}
         for (i = 0; aux->next; i++)

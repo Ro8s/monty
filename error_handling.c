@@ -32,10 +32,8 @@ void error_checker(int ac, char **av)
  * @token: token to print in the error message
  * ------------------
  */
-void error_unk_ins(stack_t *list, char *buffer, unsigned int line, char *token)
+void error_unk_ins(unsigned int line, char *token)
 {
-	free_list(&*list);
-	free(buffer);
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, token);
 	exit(EXIT_FAILURE);
 }
@@ -46,9 +44,8 @@ void error_unk_ins(stack_t *list, char *buffer, unsigned int line, char *token)
  * @line: Line being evaluated
  * ------------------
  */
-void error_push(stack_t *list, unsigned int line)
+void error_push(unsigned int line)
 {
 	fprintf(stderr, "L%d: usage: push integer\n", line);
-	free_list(&*list);
 	exit(EXIT_FAILURE);
 }

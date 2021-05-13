@@ -47,16 +47,17 @@ typedef struct instruction_s
 
 /* Regular prototypes */
 void error_checker(int ac, char **av);
-void line_processor(unsigned int line, FILE *file, stack_t **list);
-void free_list(stack_t *list);
-void error_unk_ins(stack_t *, char *, unsigned int, char *);
-void error_push(stack_t *list, unsigned int line);
+void line_processor(unsigned int, FILE *, stack_t **, char *);
+void free_list(stack_t **list);
+void free_buffer(char *buffer);
+void close_file(FILE *file);
+void error_unk_ins(unsigned int line, char *token);
+void error_push(unsigned int line);
 
 /* Instruction prototypes */
 void push(stack_t **list, unsigned int line);
 void pall(stack_t **list, unsigned int line);
 void pint(stack_t **list, unsigned int line);
-void pint(stack_t **list __attribute__((unused)), unsigned int line __attribute__((unused)));
 
 
 #endif /* ifndef MONTY_H */
