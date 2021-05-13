@@ -137,7 +137,7 @@ void swap(stack_t **list, unsigned int line)
 	{
 		aux = aux->next;
 		ant = aux->prev;
-		c++
+		c++;
 	}
 	if (c < 2)
 	{
