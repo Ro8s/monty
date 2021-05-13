@@ -42,10 +42,12 @@ void error_checker(int ac, char **av);
 void line_processor(unsigned int line, FILE *file, stack_t **list);
 void free_list(stack_t *list);
 void error_unk_ins(stack_t *, char *, unsigned int, char *);
+void error_push(stack_t *list, unsigned int line);
 
 /* Instruction prototypes */
 void push(stack_t **list, unsigned int line);
 void pall(stack_t **list, unsigned int line);
+
 
 
 #endif /* ifndef MONTY_H */

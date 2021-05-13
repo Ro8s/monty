@@ -25,7 +25,7 @@ void error_checker(int ac, char **av)
 }
 
 /**
- * error_unk_ins - function to avoid betty
+ * error_unk_ins - Function to avoid betty
  * @list: list to free
  * @buffer: buffer to free
  * @line: Line being evaluated
@@ -37,5 +37,18 @@ void error_unk_ins(stack_t *list, char *buffer, unsigned int line, char *token)
 	free_list(&*list);
 	free(buffer);
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, token);
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * error_push - Another function to avoid betty
+ * @list: list to free
+ * @line: Line being evaluated
+ * ------------------
+ */
+void error_push(stack_t *list, unsigned int line)
+{
+	fprintf(stderr, "L%d: usage: push integer\n", line);
+	free_list(&*list);
 	exit(EXIT_FAILURE);
 }

@@ -14,17 +14,15 @@ void push(stack_t **list, unsigned int line)
 	stack_t *search = *list;
 
 	cadena = strtok(NULL, " \n\t");
+	if (!cadena)
+		error_push(&**list, line);
 	if (cadena[0] == '-' && cadena[1] != '\0')
 		i = 1;
 	else
 		i = 0;
 	for (; cadena[i]; i++)
 		if (!isdigit(cadena[i]))
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line);
-			free_list(&**list);
-			exit(EXIT_FAILURE);
-		}
+			error_push(&**list, line);
 
 	num = atoi(cadena);
 	nodo = malloc(sizeof(stack_t));
@@ -70,4 +68,9 @@ void pall(stack_t **list, unsigned int line __attribute__((unused)))
 		printf("%d\n", aux->n);
 		aux = aux->prev;
 	}
+}
+
+void pint()
+{
+	
 }
