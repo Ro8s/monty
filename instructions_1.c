@@ -38,3 +38,18 @@ void push(stack_t **list, unsigned int line)
 	nodo->prev = search;
 	search->next = nodo;
 }
+void pall(stack_t **list, unsigned int (line))
+{
+	stack_t *aux = *list;
+	int i;
+
+	for (i = 0; aux->next; i++)
+                aux = aux->next;
+	while(aux)
+	{
+		printf("%d\n", aux->n);
+		aux = aux->prev;
+	}
+
+
+}
