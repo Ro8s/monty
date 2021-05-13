@@ -48,7 +48,7 @@ void error_push(stack_t *list, unsigned int line);
 void push(stack_t **list, unsigned int line);
 void pall(stack_t **list, unsigned int line);
 void pint(stack_t **list, unsigned int line);
-
+void pint(stack_t **list __attribute__((unused)), unsigned int line __attribute__((unused)));
 
 
 #endif /* ifndef MONTY_H */

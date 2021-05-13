@@ -43,9 +43,9 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 	instruction_t instructions[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
-		/**
-		 *{"pint", pint},
+		/*
 		 *{"pop", pop},
 		 *{"swap", swap},
 		 *{"add", add},
