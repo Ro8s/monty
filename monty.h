@@ -47,6 +47,7 @@ void error_push(stack_t *list, unsigned int line);
 /* Instruction prototypes */
 void push(stack_t **list, unsigned int line);
 void pall(stack_t **list, unsigned int line);
+void pint(stack_t **list, unsigned int line);
 
 
 

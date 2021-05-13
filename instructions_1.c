@@ -70,7 +70,13 @@ void pall(stack_t **list, unsigned int line __attribute__((unused)))
 	}
 }
 
-void pint()
+/**
+ * pint - prints the value at the top from the stack
+ * @list: header of the list.
+ * @line: line of the command.
+ * ---------------------
+ */
+void pint(stack_t **list __attribute__((unused)), unsigned int line __attribute__((unused)))
 {
-	
+
 }
