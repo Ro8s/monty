@@ -68,6 +68,7 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 		token = strtok(buffer, " \n\t");
 		if (!token)
 			continue;
+
 		for (i = 0; instructions[i].opcode; i++)
 			if (strcmp(token, instructions[i].opcode) == 0)
 			{

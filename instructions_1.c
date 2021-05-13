@@ -49,7 +49,7 @@ void push(stack_t **list, unsigned int line)
  * pall - prints all the values on the stack from the top
  * @list: header of the list.
  * @line: line of the command.
- * Return: void
+ * ---------------------
  */
 void pall(stack_t **list, unsigned int line __attribute__((unused)))
 {

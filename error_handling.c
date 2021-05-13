@@ -24,7 +24,14 @@ void error_checker(int ac, char **av)
 	}
 }
 
-
+/**
+ * error_unk_ins - function to avoid betty
+ * @list: list to free
+ * @buffer: buffer to free
+ * @line: Line being evaluated
+ * @token: token to print in the error message
+ * ------------------
+ */
 void error_unk_ins(stack_t *list, char *buffer, unsigned int line, char *token)
 {
 	free_list(&*list);
