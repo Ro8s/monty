@@ -83,26 +83,19 @@ void pop(stack_t **list, unsigned int line)
  */
 void swap(stack_t **list, unsigned int line)
 {
-	int c = 1;
-	stack_t *last = *list, *ant = *list;
+	stack_t *last, *ant;
 
-	if (!*list)
+	last = last_list_check(*list);
+	
+	if (!last)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line);
 		exit(EXIT_FAILURE);
 	}
-	while (last->next)
-	{
-		last = last->next;
-		ant = last->prev;
-		c++;
-	}
-	if (c < 2)
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line);
-		exit(EXIT_FAILURE);
-	}
-	if (c == 2)
+
+	ant = last->prev;
+
+	if (!ant->prev)
 	{
 		last->next = ant;
 		ant->prev = last;
@@ -120,19 +113,25 @@ void swap(stack_t **list, unsigned int line)
 	}
 }
 
+/**
+ * last_list_check - Returns the last node of a list
+ * @list: list to run
+ * ------------------
+ * Return: The last node of a list
+ */
 stack_t *last_list_check(stack_t *list)
 {
 	int line = 1;
 
-	if (!*list)
+	if (!list)
 		return (NULL);
 
-	while (list->next->next)
+	while (list->next)
 	{
 		list = list->next;
 		line++;
 	}
-	if (c < 2)
+	if (line < 2)
 		return (NULL);
 
 	return (list);
