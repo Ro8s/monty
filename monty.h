@@ -5,13 +5,6 @@
 #include <stdio.h>
 #include <ctype.h>
 
-/*
-extern typedef struct global_var
-{
-	FILE *file;
-	char *buffer;
-} global_t;
-*/
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -59,5 +52,5 @@ void push(stack_t **list, unsigned int line);
 void pall(stack_t **list, unsigned int line __attribute__((unused)));
 void pint(stack_t **list, unsigned int line);
 void pop(stack_t **list, unsigned int line);
-void swap(stack_t **list, unsigned int line);
+
 #endif /* ifndef MONTY_H */

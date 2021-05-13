@@ -27,6 +27,7 @@ int main(int ac, char **av)
 	on_exit(free_list, &list);
 	on_exit(free_buffer, &buffer);
 	on_exit(close_file, file_pointer);
+
 	for (line = 1; line; line++)
 	{
 		if (getline(&buffer, &size, file_pointer) == -1)
