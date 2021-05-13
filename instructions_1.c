@@ -1,6 +1,6 @@
 #include "monty.h"
 
-int push(stack_t **list, unsigned int line)
+void push(stack_t **list, unsigned int line)
 {
 	int i, num;
 	char *cadena;
@@ -9,21 +9,20 @@ int push(stack_t **list, unsigned int line)
 
 	cadena = strtok(NULL, " \n\t");
 	for (i = 0; cadena[i]; i++)
-	{
 		if (!isdigit(cadena[i]))
 		{
-			fprintf(stderr, "L%d: usage: push integer", line);
-			/* free_list(list); */
-			return (-1);
+			fprintf(stderr, "L%d: usage: push integer\n", line);
+			/*free_list(list);*/
+			exit(EXIT_FAILURE);
 		}
-	}
+
 	num = atoi(cadena);
 	nodo = malloc(sizeof(stack_t));
 	if (!nodo)
 	{
-		fprintf(stderr, "Error: malloc failed");
-		/* free_list(list); */
-		return (-1);
+		fprintf(stderr, "Error: malloc failed\n");
+		/*free_list(list);*/
+		exit(EXIT_FAILURE);
 	}
 	nodo->n = num;
 	if (!*list)
@@ -31,12 +30,11 @@ int push(stack_t **list, unsigned int line)
 		nodo->next = NULL;
 		nodo->prev = NULL;
 		*list = nodo;
-		return (0);
+		return;
 	}
 	for (i = 0; search->next; i++)
 		search = search->next;
 	nodo->next = NULL;
 	nodo->prev = search;
 	search->next = nodo;
-	return (0);
 }
