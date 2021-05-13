@@ -22,13 +22,6 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 	line_processor(line, file_pointer, &list);
-	/*
-	for (i = 0; list; i++)
-	{
-		printf("%d\n", list->n);
-		list = list->next;
-	}
-	*/
 	free_list(&*list);
 	fclose(file_pointer);
 	return (EXIT_SUCCESS);
@@ -46,23 +39,22 @@ int main(int ac, char **av)
 void line_processor(unsigned int line, FILE *file, stack_t **list)
 {
 	char *buffer = NULL, *token;
-	size_t size = 32;
-	int i;
+	size_t size = 32, i;
 	instruction_t instructions[] = {
 		{"push", push},
 		{"pall", pall},
 		{NULL, NULL}
-		/*
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"div", div},
-		{"mul", mul},
-		{"mod", mod},
-		{NULL, NULL}
+		/**
+		 *{"pint", pint},
+		 *{"pop", pop},
+		 *{"swap", swap},
+		 *{"add", add},
+		 *{"nop", nop},
+		 *{"sub", sub},
+		 *{"div", div},
+		 *{"mul", mul},
+		 *{"mod", mod},
+		 *{NULL, NULL}
 		*/
 	};
 
@@ -76,14 +68,12 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 		token = strtok(buffer, " \n\t");
 		if (!token)
 			continue;
-
 		for (i = 0; instructions[i].opcode; i++)
 			if (strcmp(token, instructions[i].opcode) == 0)
 			{
 				instructions[i].f(&*list, line);
 				break;
 			}
-
 		if (!instructions[i].opcode)
 		{
 			free_list(&**list);
@@ -93,7 +83,6 @@ void line_processor(unsigned int line, FILE *file, stack_t **list)
 		}
 	}
 }
-
 /**
  * error_checker - checks for the basic errors
  * @ac: Number of parameters
