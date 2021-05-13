@@ -15,14 +15,14 @@ void push(stack_t **list, unsigned int line)
 
 	cadena = strtok(NULL, " \n\t");
 	if (!cadena)
-		error_push(&*list, line);
+		error_push(line);
 	if (cadena[0] == '-' && cadena[1] != '\0')
 		i = 1;
 	else
 		i = 0;
 	for (; cadena[i]; i++)
 		if (!isdigit(cadena[i]))
-			error_push(&*list, line);
+			error_push(line);
 
 	num = atoi(cadena);
 	nodo = malloc(sizeof(stack_t));
@@ -77,11 +77,11 @@ void pall(stack_t **list, unsigned int line __attribute__((unused)))
 void pint(stack_t **list, unsigned int line)
 {
 	stack_t *aux = *list;
-	int i;
+        int i;
 
 	if (!aux)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty", line);
+		fprintf(stderr, "L%d: can't pint, stack empty\n",line);
 		exit(EXIT_FAILURE);
 	}
 	for (i = 0; aux->next; i++)
@@ -99,12 +99,12 @@ void pop(stack_t **list, unsigned int line)
 	stack_t *aux = *list;
 	int i;
 
-	if (!list)
+	if(!*list)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack", line);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
 		exit(EXIT_FAILURE);
 	}
-	if (list->next == NULL)
+	if((*list)->next == NULL)
 	{
 		*list = NULL;
 		free(aux);

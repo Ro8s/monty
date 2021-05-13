@@ -5,21 +5,22 @@
  * @list: list to free
  * ---------------
  */
-void free_list(stack_t **list)
+void free_list(int status, void *arg)
 {
 	stack_t *fire;
+	stack_t **list;
 
-	if (!*list)
-		return;
+	(void)status;
 
-	fire = *list;
+	list = (stack_t **)arg;
 
-	for (; *list;)
-	{
-		fire = *list;
-		*list = (*list)->next;
-		free(*fire);
-	}
+	if (*list)
+		for (; *list;)
+		{
+			fire = *list;
+			*list = (*list)->next;
+			free(fire);
+		}
 }
 
 /**
@@ -27,10 +28,15 @@ void free_list(stack_t **list)
  * @buffer: Buffer to liberate
  * ------------
  */
-void free_buffer(char *buffer)
+void free_buffer(int status, void *arg)
 {
-	if (buffer)
-		free(buffer);
+	char **buffer;
+
+	(void)status;
+	
+	buffer = (char **)arg;
+	if (*buffer)
+		free(*buffer);
 }
 
 /**
@@ -38,8 +44,13 @@ void free_buffer(char *buffer)
  * @file: File to close
  * ---------------
  */
-void close_file(FILE *file)
+void close_file(int status, void *arg)
 {
+	FILE *file;
+
+	(void)status;
+
+	file = (FILE *)arg;
 	fclose(file);
 }
 

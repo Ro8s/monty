@@ -12,6 +12,7 @@ int main(int ac, char **av)
 	stack_t *list;
 	unsigned int line;
 	char *buffer = NULL;
+	size_t size = 32;
 
 	list = NULL;
 	error_checker(ac, av);
@@ -30,8 +31,9 @@ int main(int ac, char **av)
 	{
 		if (getline(&buffer, &size, file_pointer) == -1)
 			break;
-		line_processor(line, file_pointer, &list, buffer);
+		line_processor(line, &list, buffer);
 	}
+
 	exit(EXIT_SUCCESS);
 }
 
@@ -44,10 +46,10 @@ int main(int ac, char **av)
  * Return: -1 if error, 0 if success
  */
 
-void line_processor(unsigned int line, FILE *file, stack_t **list, char *buffer)
+void line_processor(unsigned int line, stack_t **list, char *buffer)
 {
 	char *token;
-	size_t size = 32, i;
+	int i;
 	instruction_t instructions[] = {
 		{"push", push},
 		{"pall", pall},
@@ -76,5 +78,5 @@ void line_processor(unsigned int line, FILE *file, stack_t **list, char *buffer)
 			break;
 		}
 	if (!instructions[i].opcode)
-		error_unk_ins(&*list, &*buffer, line, token);
+		error_unk_ins(line, token);
 }
