@@ -125,38 +125,39 @@ void pop(stack_t **list, unsigned int line)
  */
 void swap(stack_t **list, unsigned int line)
 {
-	int c = 0;
-	stack_t *aux = *list, *ant = *list;
+	int c = 1;
+	stack_t *last = *list, *ant = *list;
 
 	if (!*list)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short", line);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line);
 		exit(EXIT_FAILURE);
 	}
-	while (aux->next)
+	while (last->next)
 	{
-		aux = aux->next;
-		ant = aux->prev;
+		last = last->next;
+		ant = last->prev;
 		c++;
 	}
 	if (c < 2)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short", line);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line);
 		exit(EXIT_FAILURE);
 	}
 	if (c == 2)
 	{
-		aux->next = ant;
-		ant->prev = aux;
+		last->next = ant;
+		ant->prev = last;
 		ant->next = NULL;
-		aux->prev = NULL;
-		*list = aux;
+		last->prev = NULL;
+		*list = last;
 	}
 	else
 	{
-		aux->prev = ant->prev->next;
-		ant->prev->next = ant->next;
-		ant->prev = aux;
+		last->prev = ant->prev;
+		ant->prev->next = last;
+		last->next = ant;
+		ant->prev = last;
 		ant->next = NULL;
 	}
 }
