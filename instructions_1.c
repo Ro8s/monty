@@ -1,5 +1,6 @@
 #include "monty.h"
 
+
 void push(stack_t **list, unsigned int line)
 {
 	int i, num;
@@ -39,7 +40,12 @@ void push(stack_t **list, unsigned int line)
 	search->next = nodo;
 }
 
-
+/**
+ * pall - prints all the values on the stack, starting from the top of the stack.
+ * @list: header of the list.
+ * @line: line of the command.
+ * Return: void
+ */
 void pall(stack_t **list, unsigned int line __attribute__((unused)))
 {
 	stack_t *aux = *list;
