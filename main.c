@@ -61,6 +61,7 @@ void line_processor(unsigned int line, stack_t **list, char *buffer)
 		{"sub", sub},
 		{"mul", mul},
 		{"div", div_f},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 

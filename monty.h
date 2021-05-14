@@ -60,5 +60,6 @@ void add(stack_t **list, unsigned int line);
 void sub(stack_t **list, unsigned int line);
 void div_f(stack_t **list, unsigned int line);
 void mul(stack_t **list, unsigned int line);
+void mod(stack_t **list, unsigned int line);
 
 #endif /* ifndef MONTY_H */
