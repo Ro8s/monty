@@ -59,7 +59,6 @@ void line_processor(unsigned int line, stack_t **list, char *buffer)
 		{"swap", swap},
 		{NULL, NULL}
 		/*
-		 *{"swap", swap},
 		 *{"add", add},
 		 *{"nop", nop},
 		 *{"sub", sub},
@@ -75,11 +74,15 @@ void line_processor(unsigned int line, stack_t **list, char *buffer)
 		return;
 
 	for (i = 0; instructions[i].opcode; i++)
+	{
+		if (strcmp(token, "nop") == 0 || token[0] == '#')
+			break;
 		if (strcmp(token, instructions[i].opcode) == 0)
 		{
 			instructions[i].f(&*list, line);
 			break;
 		}
+	}
 	if (!instructions[i].opcode)
 		error_unk_ins(line, token);
 }
