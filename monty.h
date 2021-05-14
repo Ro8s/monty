@@ -55,4 +55,8 @@ void pop(stack_t **list, unsigned int line);
 void swap(stack_t **list, unsigned int line);
 stack_t *last_list_check(stack_t *list);
 
+/* Instructions matematics */
+void add(stack_t **list, unsigned int line);
+
+
 #endif /* ifndef MONTY_H */
