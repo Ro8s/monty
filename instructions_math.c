@@ -50,14 +50,14 @@ void sub(stack_t **list, unsigned int line)
 }
 
 /**
- * div - divides the last two nodes.
+ * div_f - divides the last two nodes.
  * @list: header of the list.
  * @line: line of the command.
  * ---------------------
  */
-void div(stack_t **list, unsigned int line)
+void div_f(stack_t **list, unsigned int line)
 {
-	stack_t *last, before;
+	stack_t *last, *before;
 
 	last = last_list_check(*list);
 	if (!last)
@@ -87,16 +87,17 @@ void div(stack_t **list, unsigned int line)
 void mul(stack_t **list, unsigned int line)
 {
 	stack_t *aux = *list;
-        int mul;
+	int mul;
 
-        aux = last_list_check(aux);
-        if (!aux)
-        {
-                fprintf(stderr, "L%d: can't mul, stack too short\n", line);
-                exit(EXIT_FAILURE);
-        }
-        mul = aux->n * aux->prev->n;
-        aux->prev->n = mul;
-        aux->prev->next = NULL;
-        free(aux);
+	aux = last_list_check(aux);
+	if (!aux)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	mul = aux->n * aux->prev->n;
+	aux->prev->n = mul;
+	aux->prev->next = NULL;
+	free(aux);
 }

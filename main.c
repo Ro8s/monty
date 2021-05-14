@@ -60,7 +60,7 @@ void line_processor(unsigned int line, stack_t **list, char *buffer)
 		{"add", add},
 		{"sub", sub},
 		{"mul", mul},
-		{"div", div},
+		{"div", div_f},
 		{NULL, NULL}
 	};
 
