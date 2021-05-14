@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * add - prints all the values on the stack from the top
+ * add - addition between the previous and the top element.
  * @list: header of the list.
  * @line: line of the command.
  * ---------------------
@@ -18,6 +18,28 @@ void add(stack_t **list, unsigned int line)
 	}
 	sum = aux->n + aux->prev->n;
 	aux->prev->n = sum;
+	aux->prev->next = NULL;
+	free(aux);
+}
+/**
+ * sub - subtraction between the previous and the top element.
+ * @list: header of the list.
+ * @line: line of the command.
+ * ---------------------
+ */
+void sub(stack_t **list, unsigned int line)
+{
+	stack_t *aux = *list;
+	int mul;
+
+	aux = last_list_check(aux);
+	if (!aux)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+	mul = aux->n - aux->prev->n;
+	aux->prev->n = mul;
 	aux->prev->next = NULL;
 	free(aux);
 }
