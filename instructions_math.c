@@ -46,3 +46,25 @@ void sub(stack_t **list, unsigned int line)
 	aux->prev->next = NULL;
 	free(aux);
 }
+/**
+ * mul - multiplication between the previous and the top element.
+ * @list: header of the list.
+ * @line: line of the command.
+ * ---------------------
+ */
+void mul(stack_t **list, unsigned int line)
+{
+	stack_t *aux = *list;
+        int mul;
+
+        aux = last_list_check(aux);
+        if (!aux)
+        {
+                fprintf(stderr, "L%d: can't mul, stack too short\n", line);
+                exit(EXIT_FAILURE);
+        }
+        mul = aux->n * aux->prev->n;
+        aux->prev->n = mul;
+        aux->prev->next = NULL;
+        free(aux);
+}
