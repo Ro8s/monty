@@ -41,7 +41,7 @@ void sub(stack_t **list, unsigned int line)
 	if (aux->prev->n < 0)
 		res = aux->n + aux->prev->n;
 	else
-		res = aux->n + aux->prev->n;
+		res = aux->n - aux->prev->n;
 	aux->prev->n = res;
 	aux->prev->next = NULL;
 	free(aux);
