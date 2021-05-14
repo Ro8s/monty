@@ -101,3 +101,31 @@ void mul(stack_t **list, unsigned int line)
 	aux->prev->next = NULL;
 	free(aux);
 }
+/**
+ * mod - module the last two nodes.
+ * @list: header of the list.
+ * @line: line of the command.
+ * ---------------------
+ */
+void mod(stack_t **list, unsigned int line)
+{
+	stack_t *last, *before;
+
+	last = last_list_check(*list);
+	if (!last)
+	{
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	if (last->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	before = last->prev;
+	before->n = before->n % last->n;
+	before->next = NULL;
+	free(last);
+}
