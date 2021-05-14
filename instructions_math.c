@@ -30,7 +30,7 @@ void add(stack_t **list, unsigned int line)
 void sub(stack_t **list, unsigned int line)
 {
 	stack_t *aux = *list;
-	int mul;
+	int res;
 
 	aux = last_list_check(aux);
 	if (!aux)
@@ -38,8 +38,11 @@ void sub(stack_t **list, unsigned int line)
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line);
 		exit(EXIT_FAILURE);
 	}
-	mul = aux->n - aux->prev->n;
-	aux->prev->n = mul;
+	if (aux->prev->n < 0)
+		res = aux->n + aux->prev->n;
+	else
+		res = aux->n + aux->prev->n;
+	aux->prev->n = res;
 	aux->prev->next = NULL;
 	free(aux);
 }
