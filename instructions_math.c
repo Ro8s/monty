@@ -13,7 +13,7 @@ void add(stack_t **list, unsigned int line)
 	aux = last_list_check(aux);
 	if (!aux)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short", line);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line);
 		exit(EXIT_FAILURE);
 	}
 	sum = aux->n + aux->prev->n;
