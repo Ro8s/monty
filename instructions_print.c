@@ -22,6 +22,7 @@ void pall(stack_t **list, unsigned int line __attribute__((unused)))
 		aux = aux->prev;
 	}
 }
+
 /**
  * pint - prints the value at the top from the stack
  * @list: header of the list.
@@ -41,4 +42,33 @@ void pint(stack_t **list, unsigned int line)
 	for (i = 0; aux->next; i++)
 		aux = aux->next;
 	printf("%d\n", aux->n);
+}
+
+/**
+ * pchar - prints the char at the top from the stack
+ * @list: header of the list.
+ * @line: line of the command.
+ * ---------------------
+ */
+void pchar(stack_t **list, unsigned int line)
+{
+	stack_t *last = *list;
+	int n;
+
+	if (!last)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	while (last->next)
+		last = last->next;
+
+	n = last->n;
+	if (n < 0 || n > 255)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", n);
 }
