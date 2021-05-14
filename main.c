@@ -57,6 +57,7 @@ void line_processor(unsigned int line, stack_t **list, char *buffer)
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
+		{"add", add},
 		{NULL, NULL}
 	};
 

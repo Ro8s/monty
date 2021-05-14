@@ -1,6 +1,4 @@
-push 3
-push 4
-push 20
-#swap
-nop
+push 1
+push 2
+add
 pall
