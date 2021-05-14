@@ -77,3 +77,26 @@ void div(stack_t **list, unsigned int line)
 	before->next = NULL;
 	free(last);
 }
+
+/**
+ * mul - multiplies the last two nodes.
+ * @list: header of the list.
+ * @line: line of the command.
+ * ---------------------
+ */
+void mul(stack_t **list, unsigned int line)
+{
+	stack_t *aux = *list;
+        int mul;
+
+        aux = last_list_check(aux);
+        if (!aux)
+        {
+                fprintf(stderr, "L%d: can't mul, stack too short\n", line);
+                exit(EXIT_FAILURE);
+        }
+        mul = aux->n * aux->prev->n;
+        aux->prev->n = mul;
+        aux->prev->next = NULL;
+        free(aux);
+}
