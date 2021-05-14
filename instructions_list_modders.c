@@ -86,7 +86,7 @@ void swap(stack_t **list, unsigned int line)
 	stack_t *last, *ant;
 
 	last = last_list_check(*list);
-	
+
 	if (!last)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line);
